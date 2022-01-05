@@ -1327,12 +1327,39 @@
 
 //배열의 수서를 반대로 나열하기 reverse
 
-const str = "abcdefghijklmnopqrstuvwxyz";
-const arr = str.split("");
-console.log(arr);
+// const str = "abcdefghijklmnopqrstuvwxyz";
+// const arr = str.split("");
+// console.log(arr);
 
-arr.reverse();
+// arr.reverse();
 
-console.log(arr);
+// console.log(arr);
 
 // console.log(arr.join("-"));
+
+//변수를 설정하는 다양한 방법과 축약어를 저장할 수 있음.
+
+// let str = "Na";
+// let bat = "BatMan";
+
+// let batman = `${str.repeat(8)} ${bat}`;
+
+// console.log(batman);
+
+// const person = {
+//   first: "Alberto",
+//   last: "Montalesi",
+//   links: {
+//     social: {
+//       facebook: "http://www.facebook.com",
+//     },
+//   },
+// };
+
+// const { first, last } = person;
+// const { facebook: FB } = person.links.social;
+
+// console.log(first);
+// console.log(FB);
+
+// const nameAge = ["Alberto", "Montalesi", 25];
