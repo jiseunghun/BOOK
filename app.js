@@ -1325,18 +1325,6 @@
 // console.log(`내림차순 : ${numArr2}`);
 // console.log(objArr2);
 
-//배열의 수서를 반대로 나열하기 reverse
-
-// const str = "abcdefghijklmnopqrstuvwxyz";
-// const arr = str.split("");
-// console.log(arr);
-
-// arr.reverse();
-
-// console.log(arr);
-
-// console.log(arr.join("-"));
-
 //변수를 설정하는 다양한 방법과 축약어를 저장할 수 있음.
 
 // let str = "Na";
@@ -1363,3 +1351,116 @@
 // console.log(FB);
 
 // const nameAge = ["Alberto", "Montalesi", 25];
+
+//2022년 1월 8일
+
+//배열의 수서를 반대로 나열하기 reverse
+
+// const str = "abcdefghijklmnopqrstuvwxyz";
+// const arr = str.split("");
+// console.log(arr);
+
+// arr.reverse();
+
+// console.log(arr);
+
+// console.log(arr.join("-"));
+
+//배열 요소가 특정 조건을 만족하는지 확인하기.
+//callback 함수가 무엇인지 찾아보기.
+//
+
+// const arr = [
+//   { id: 0, name: "혜림", age: 6 },
+//   { id: 1, name: "현일", age: 3 },
+//   { id: 2, name: "현아", age: 5 },
+//   { id: 3, name: "우림", age: 2 },
+// ];
+
+// const isHyunAHere = arr.some((el) => el.name == "현아");
+// const olderThanSix = arr.some((el) => el.age > 6);
+
+// console.log(isHyunAHere);
+// console.log(olderThanSix);
+
+//모든 배열 요소가 특정 조건을 만족하는지 확인하기.
+
+// const arr = [
+//   { id: 0, name: "혜림", age: 6 },
+//   { id: 1, name: "현일", age: 3 },
+//   { id: 2, name: "현아", age: 5 },
+//   { id: 3, name: "우림", age: 2 },
+// ];
+
+// const isAllHyuna = arr.every((el) => el.name == "현아");
+
+// console.log(isAllHyuna); //모든 배열요소를 확인하는 것이기 때문에 false를 반환함
+// // 첫번째 array가 혜림이어서.
+
+// const isAllAgeYoungerThanSeven = arr.every((ag) => ag.age < 7);
+
+// console.log(isAllAgeYoungerThanSeven);
+
+//배열의 특정 조건을 기준으로 필터링하기
+//callback 함수는 무조건 boolean으로만 반환되어야함
+
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// const fillteredTwo = arr.filter((a) => {
+//   console.log(`현재 위치는 ${a} 입니다.`);
+//   return a % 2 === 0;
+// });
+
+// console.log(fillteredTwo);
+
+// fillteredTwo.reverse();
+
+// console.log(fillteredTwo);
+
+// const filteredThree = arr.filter((a) => a % 3 === 0);
+// console.log(filteredThree);
+
+//배열의 특정 고건을 충족하는 요소 찾기
+//조건을 만족하는 첫번째 요소를 반환함.
+//callback 함수는 무조건 boolean으로만 반환되어야함
+
+// const arr = [
+//   { name: "우림", age: 2 },
+//   { name: "현아", age: 5 },
+//   { name: "탄이", age: 30 },
+//   { name: "현일", age: 3 },
+//   { name: "혜림", age: 6 },
+// ];
+
+// const myFriend = arr.find((a) => a.age == 30);
+
+// console.log(myFriend);
+
+// console.log(myFriend.name);
+// console.log(myFriend.age);
+
+//배열 요소 일괄 변경하기
+//callback 함수의 리턴값들을 재조합해서 새로운 배열로 저장함.
+
+const arr = [
+  { id: 0, name: "혜림", age: 6 },
+  { id: 1, name: "현일", age: 3 },
+  { id: 2, name: "현아", age: 5 },
+  { id: 3, name: "우림", age: 2 },
+];
+
+const arr2 = arr.map((el) => {
+  el.age = el.age + 1;
+  return el;
+});
+//마지막에 객체를 반환했기 때문에 age가 변경된 객체가 반환됨
+console.log(arr2);
+
+const arr3 = arr.map((el) => {
+  const newName = `김${el.name}`;
+  return newName;
+});
+
+//arr3에는 이름만 반환했기때문에  문자열만 나열된 배열이 새로 만들어짐
+
+console.log(arr3);
