@@ -1442,25 +1442,304 @@
 //배열 요소 일괄 변경하기
 //callback 함수의 리턴값들을 재조합해서 새로운 배열로 저장함.
 
-const arr = [
-  { id: 0, name: "혜림", age: 6 },
-  { id: 1, name: "현일", age: 3 },
-  { id: 2, name: "현아", age: 5 },
-  { id: 3, name: "우림", age: 2 },
-];
+// const arr = [
+//   { id: 0, name: "혜림", age: 6 },
+//   { id: 1, name: "현일", age: 3 },
+//   { id: 2, name: "현아", age: 5 },
+//   { id: 3, name: "우림", age: 2 },
+// ];
 
-const arr2 = arr.map((el) => {
-  el.age = el.age + 1;
-  return el;
-});
-//마지막에 객체를 반환했기 때문에 age가 변경된 객체가 반환됨
-console.log(arr2);
+// const arr2 = arr.map((el) => {
+//   el.age = el.age + 1;
+//   return el;
+// });
+// //마지막에 객체를 반환했기 때문에 age가 변경된 객체가 반환됨
+// console.log(arr2);
 
-const arr3 = arr.map((el) => {
-  const newName = `김${el.name}`;
-  return newName;
-});
+// const arr3 = arr.map((el) => {
+//   const newName = `김${el.name}`;
+//   return newName;
+// });
 
-//arr3에는 이름만 반환했기때문에  문자열만 나열된 배열이 새로 만들어짐
+// //arr3에는 이름만 반환했기때문에  문자열만 나열된 배열이 새로 만들어짐
 
-console.log(arr3);
+// console.log(arr3);
+
+// 2022년 1월 9일
+// 배열 내에 값을 누적시키기
+
+// reduce( (누적된 값, 현재 인덱스) =>{
+//   return 누적값으로 반환되는 값
+// }, 초기값)
+
+// const numArr = [1, 2, 3, 4, 5];
+
+// const result = numArr.reduce((acc, el) => {
+//   return acc + el;
+// }, 0);
+
+// console.log(result);
+
+//reduce를 이용해 중첩된 배열을 단일화 시키기
+
+// concat은 배열을 합칠때 사용됨 acc 배열과 el을 합침
+
+// const arr = [1, [2, 3], [4, 5, 6], ["배열", "나열하기"], "JavaScript"];
+
+// const result = arr.reduce((acc, el) => {
+//   return acc.concat(el);
+// }, []);
+
+// console.log(result);
+
+// 객체에서 키값 추출하기
+
+// const obj = {
+//   movie: "Sunny",
+//   music: "Like Sugar",
+//   style: "Retro",
+//   price: Infinity,
+// };
+
+// const arr = Object.keys(obj);
+
+// console.log(arr);
+
+//객체에서 값 value 만 추출하기
+
+// const obj = {
+//   movie: "Sunny",
+//   music: "Like Sugar",
+//   style: "Retro",
+//   price: Infinity,
+// };
+
+// const arr = Object.values(obj);
+
+// console.log(arr);
+
+//객체를 배열로 변환하기
+
+// const obj = {
+//   movie: "Sunny",
+//   music: "Like Sugar",
+//   style: "Retro",
+//   price: Infinity,
+// };
+
+// const modifiedObj = Object.entries(obj);
+// console.log(modifiedObj);
+
+//객체가 변경되지 않도록 하기
+
+// let obj = {};
+
+// obj.title = "IDOL";
+// obj = Object.freeze(obj);
+// obj.title = "Euphoria";
+
+// console.log(obj);
+
+// const changeUntilNum = (obj, num) => {
+//   "use strict";
+
+//   while (true) {
+//     console.log(obj);
+
+//     if (obj.age >= num) {
+//       obj = Object.freeze(obj);
+//     }
+//     obj.age += 1;
+//   }
+// };
+
+// let profile = { name: "지연", age: 25 };
+// changeUntilNum(profile, 30);
+
+//객체에 속성 추가 못하게 만들기
+//seal을 엄격모드 use strict가 선언된 상태면 에러가 발생함.
+//크롬 자체에서 엄격모드를 실행하든듯?
+
+// const album = {
+//   name: "LOVE YOURSELF",
+// };
+
+// album.song = "Euphoria";
+// album.singer = "RM";
+
+// console.log(album);
+
+// Object.seal(album);
+
+// album.comment = "Answer";
+// album.singer = "JK";
+// delete album.name;
+
+// console.log(album);
+
+//객체 병합 확장하기
+
+// const obj1 = { one: 1, two: 2, three: 3 };
+// const obj2 = { name: "탄이", age: 5, address: "Seoul" };
+// const obj3 = { friends: ["혜림", "현아", "현일", "우림"] };
+
+// const newObj1 = Object.assign({}, obj1);
+// const newObj2 = Object.assign({}, obj1, obj2);
+// newObj1.four = 4;
+
+// console.log(obj1);
+// console.log(newObj1);
+// console.log(newObj2);
+
+// console.log("\n");
+
+// const newObj3 = Object.assign(obj1, obj3);
+
+// console.log(obj1);
+// console.log(newObj1);
+// console.log(newObj2);
+// console.log(newObj3);
+
+//진수 변환하기
+// const dec = 531;
+
+// const binByDex = dec.toString(2);
+// const octByDex = dec.toString(8);
+// const hexByDex = dec.toString(16);
+
+// console.log(binByDex);
+// console.log(octByDex);
+// console.log(hexByDex);
+
+//parseInt로 10진수가 아닌 진법을 다른 진법으로 변환가능함.
+
+// const bin = 1000010011;
+// const oct = 1023;
+// const hex = 213;
+
+// const dexByBin = parseInt(bin, 2);
+// const dexByOct = parseInt(oct, 8);
+// const dexByhex = parseInt(hex, 16);
+// const hexByOct = parseInt(oct, 8).toString(16);
+
+// console.log(dexByBin);
+// console.log(dexByOct);
+// console.log(dexByhex);
+// console.log(hexByOct);
+
+// Math 객체에서 무작위 값을 구하는 random
+//random은 0~1사이의 무작위 실수값을 반환함
+
+// const generateRandom = (min, max) => {
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// };
+
+// for (let i = 0; i < 5; i++) {
+//   console.log(generateRandom(1, 10));
+// }
+
+// for (let i = 0; i < 5; i++) {
+//   console.log(generateRandom(10, 100));
+// }
+
+// const ran = Math.random();
+
+// console.log(ran);
+
+// 특정 자리수에서 반올림하기.
+
+// const val = 573.926;
+
+// console.log(Math.round(val));
+// console.log(Math.round(val * 10) / 10);
+// console.log(Math.round(val * 100) / 100);
+// console.log(Math.round(val / 10) * 10);
+// console.log(Math.round(val / 100) * 100);
+
+//특정 자리수에서 올림하기
+
+// const positiveNum = 93.54;
+// const negativeNum = -39.27;
+
+// console.log(Math.ceil(positiveNum));
+// console.log(Math.ceil(negativeNum));
+// console.log(Math.ceil(positiveNum * 10) / 10);
+// console.log(Math.ceil(positiveNum / 10) * 10);
+// console.log(Math.ceil(negativeNum * 10) / 10);
+// console.log(Math.ceil(negativeNum / 10) * 10);
+
+//특정 자리수에서 내림하기
+
+// const positiveNum = 93.54;
+// const negativeNum = -39.27;
+
+// console.log(Math.floor(positiveNum));
+// console.log(Math.floor(negativeNum));
+// console.log(Math.floor(positiveNum * 10) / 10);
+// console.log(Math.floor(positiveNum / 10) * 10);
+// console.log(Math.floor(negativeNum * 10) / 10);
+// console.log(Math.floor(negativeNum / 10) * 10);
+
+//현재 시간을 원하는 포맷으로 출력하기
+
+// Date.prototype.yyyymmdd = function () {
+//   const yyyy = this.getFullYear();
+//   const mm =
+//     this.getMonth() < 9 ? `0${this.getMonth() + 1}` : this.getMonth() + 1;
+//   const dd = this.getDate() < 10 ? `0${this.getDate()}` : this.getDate();
+//   return "" + yyyy + mm + dd;
+// };
+
+////date는 Date 객체에서 상속받은 객체 인스턴트임 new로 만들어냈댜.
+
+// const date = new Date();
+// console.log(date.yyyymmdd());
+
+//UTC 기준 날짜 출력하기
+
+// const date = new Date();
+// const dateUTC = Date.UTC(
+//   date.getUTCFullYear(),
+//   date.getUTCMonth(),
+//   date.getUTCDate(),
+//   date.getUTCHours(),
+//   date.getUTCMinutes(),
+//   date.getUTCSeconds()
+// );
+
+// console.log(new Date(dateUTC));
+
+//두개의 날짜 사이의 경과 시간 계산하기
+
+Date.daysDiff = (date1, date2) => {
+  if (!(date1 instanceof Date) || !(date2 instanceof Date)) return "";
+
+  const d1 = date1.getTime();
+  const d2 = date2.getTime();
+
+  let diff = d2 - d1;
+
+  console.log(diff);
+  const seconds = Math.floor((diff = diff / 1000) % 60);
+  console.log(diff);
+  const minutes = Math.floor((diff = diff / 60) % 60);
+  console.log(diff);
+  const hours = Math.floor((diff = diff / 60) % 24);
+  console.log(diff);
+  const days = Math.floor(diff / 24);
+  return `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+};
+
+var from = new Date(2000, 0, 1);
+var to = new Date(
+  from.getFullYear() + 1,
+  from.getMonth() + 3,
+  from.getDate() + 5,
+  from.getHours() + 4,
+  from.getMinutes() + 30,
+  from.getSeconds() + 50
+);
+
+console.log(`From   > ${from}`);
+console.log(`To     > ${to}`);
+console.log(Date.daysDiff(from, to));
