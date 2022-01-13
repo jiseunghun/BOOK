@@ -1711,35 +1711,190 @@
 
 //두개의 날짜 사이의 경과 시간 계산하기
 
-Date.daysDiff = (date1, date2) => {
-  if (!(date1 instanceof Date) || !(date2 instanceof Date)) return "";
+// Date.daysDiff = (date1, date2) => {
+//   if (!(date1 instanceof Date) || !(date2 instanceof Date)) return "";
 
-  const d1 = date1.getTime();
-  const d2 = date2.getTime();
+//   const d1 = date1.getTime();
+//   const d2 = date2.getTime();
 
-  let diff = d2 - d1;
+//   let diff = d2 - d1;
 
-  console.log(diff);
-  const seconds = Math.floor((diff = diff / 1000) % 60);
-  console.log(diff);
-  const minutes = Math.floor((diff = diff / 60) % 60);
-  console.log(diff);
-  const hours = Math.floor((diff = diff / 60) % 24);
-  console.log(diff);
-  const days = Math.floor(diff / 24);
-  return `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
-};
+//   console.log(diff);
+//   const seconds = Math.floor((diff = diff / 1000) % 60);
+//   console.log(diff);
+//   const minutes = Math.floor((diff = diff / 60) % 60);
+//   console.log(diff);
+//   const hours = Math.floor((diff = diff / 60) % 24);
+//   console.log(diff);
+//   const days = Math.floor(diff / 24);
+//   return `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+// };
 
-var from = new Date(2000, 0, 1);
-var to = new Date(
-  from.getFullYear() + 1,
-  from.getMonth() + 3,
-  from.getDate() + 5,
-  from.getHours() + 4,
-  from.getMinutes() + 30,
-  from.getSeconds() + 50
-);
+// var from = new Date(2000, 0, 1);
+// var to = new Date(
+//   from.getFullYear() + 1,
+//   from.getMonth() + 3,
+//   from.getDate() + 5,
+//   from.getHours() + 4,
+//   from.getMinutes() + 30,
+//   from.getSeconds() + 50
+// );
 
-console.log(`From   > ${from}`);
-console.log(`To     > ${to}`);
-console.log(Date.daysDiff(from, to));
+// console.log(`From   > ${from}`);
+// console.log(`To     > ${to}`);
+// console.log(Date.daysDiff(from, to));
+
+//2022년 1월 11일
+
+// JSON을 문자열로 변환하기
+
+// const testStringify = {
+//   stringifiedNum: JSON.stringify(13.1),
+//   stringifiedStr: JSON.stringify("Kiss Carnival"),
+//   stringifiedBln: JSON.stringify(false),
+//   stringifiedArr: JSON.stringify([2003, 2017]),
+// };
+
+// for (let key in testStringify) {
+//   console.log(`----------${key}-----------`);
+//   console.log(typeof testStringify[key]);
+//   console.log(testStringify[key]);
+// }
+
+// console.log(`------------stringifyObj------------`);
+// const obj = {
+//   drama: "PET",
+//   season: 2017,
+//   casting: ["koyuki", "matsumoto jun"],
+//   character: ["sumire", "momo"],
+// };
+// console.log(typeof JSON.stringify(obj));
+// console.log(JSON.stringify(obj));
+// console.log(JSON.stringify(obj, ["drama", "season"]));
+// console.log(JSON.stringify(obj, null, 4));
+// console.log(
+//   JSON.stringify(
+//     obj,
+//     (key, val) => {
+//       if (key === "season") return 2003;
+//       return val;
+//     },
+//     4
+//   )
+// );
+
+//2022년 1월 12일
+
+//JSON 문자열을 다시 JSON 객체로 변환하기.
+
+// const jsonStr =
+//   '{"drama":"PET","season":2017,"casting":' +
+//   '["koyuki","matsumoto jun"],"character":["sumire","momo"]}';
+
+// console.log(jsonStr);
+
+// console.log(JSON.parse(jsonStr));
+// console.log(
+//   JSON.parse(jsonStr, (key, val) => {
+//     if (key === "season") val = 2003;
+//     return val;
+//   })
+// );
+
+// console.log(JSON.parse("13.1"));
+// console.log(typeof JSON.parse("13.1"));
+// console.log(JSON.parse("false"));
+// console.log(typeof JSON.parse("false"));
+
+// console.log(JSON.parse("Kiss Carnival"));
+// console.log(JSON.parse("[2003, 2017]"));
+
+//정규 표현식으로 대응되는 문자열 위치 확인하기.
+//정규 표현식 공부하기.
+
+// const str = "To lose your path is the way to find that path";
+
+// const regex1 = /path/;
+// const regex2 = /q/;
+// const regex3 = /t/g;
+// const regex4 = /t/gi;
+
+// console.log(str.search(regex1));
+// console.log(str.search(regex2));
+// console.log(str.search(regex3));
+// console.log(str.search(regex4));
+
+//정규 표현식으로 문자열 확인하기.
+
+// const str = "To lose your path is the way to find that path";
+
+// const sensitiveCaseRegex = /to/;
+// const ignoreAllCaseRegex = /to/gi;
+// const findRangeRegex = /([a-f])\w+/i;
+// const findAllRangeRegex = /([a-f])\w+/gi;
+
+// console.log(str.match(sensitiveCaseRegex));
+// console.log(str.match(ignoreAllCaseRegex));
+// console.log(str.match(findRangeRegex));
+// console.log(str.match(findAllRangeRegex));
+
+//정규 표현식으로 특정 문자의 포함 여부 확인하기.
+
+// const numRegExp = /[0-9]+/;
+// const phoneRegExp = /\d{3}-\d{3,4}-\d{4}$/;
+// const emailRegExp = /^([-_.]?[0-9a-zA-Z]{6,13})+\@([0-9a-z]+)\.([a-z]{2,3})$/i;
+
+// console.log(numRegExp.test(12345));
+// console.log(numRegExp.test("test"));
+// console.log(phoneRegExp.test("010-3003-0046"));
+// console.log(phoneRegExp.test("02-8844-1234"));
+// console.log(emailRegExp.test("test123@javascript.org"));
+// console.log(emailRegExp.test("test-javascript"));
+
+// 정규표현식을 통해서 문자열 배열로 반환하기
+
+// const str = "Java is not in Javascript";
+
+// const result1 = /java/gi.exec(str);
+// console.log(result1[0]);
+// console.log(result1.index);
+// console.log(result1.input);
+
+// const nums = '"1", "2", "3"';
+// const regex = /\d+/g;
+// while ((result2 = regex.exec(nums))) {
+//   console.log(result2, regex.lastIndex);
+// }
+
+//정규표현식으로 문자열 치환하기
+
+// console.log("2018-08-03 07-23-14".replace("-", ":"));
+// console.log("2018-08-03 07-23-14".replace(/-/g, ":"));
+// console.log("2018-08-03 07-23-14".replace(/\d/g, "9"));
+
+// const littleWomen = "Meg March, Jo March, Beth March, Amy March, March Amy ";
+// console.log(littleWomen.replace(/\w+ March/gi, "Mrs.$&"));
+// console.log(
+//   littleWomen.replace(/\w+ March/gi, (str, d1, d2, d3, d4, offset, s) => {
+//     let tag = "";
+//     if (/Meg/.test(str)) tag = "첫째";
+//     else if (/Jo/.test(str)) tag = "둘째";
+//     else if (/Beth/.test(str)) tag = "셋째";
+//     else if (/Amy/.test(str)) tag = "넷째";
+
+//     console.log(`원작 "작은 아씨들"에서 주인공 ${str}은 ${tag}입니다.`);
+//     console.log(d1);
+//     console.log(d2);
+//     console.log(d3);
+//     return tag;
+//   })
+// );
+
+// const name = "March Amy";
+// console.log(name.replace(/(March) (Amy)/, "$2 $1"));
+// console.log(
+//   name.replace(/(March) (Amy)/, (str, d1, d2, offset, s) => {
+//     console.log(`${d2} is name, ${d1} is first name.`);
+//     return `${d2} ${d1}`;
+//   })
+// );
