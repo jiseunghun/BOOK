@@ -1890,11 +1890,11 @@
 //   })
 // );
 
-// const name = "March Amy";
-// console.log(name.replace(/(March) (Amy)/, "$2 $1"));
-// console.log(
-//   name.replace(/(March) (Amy)/, (str, d1, d2, offset, s) => {
-//     console.log(`${d2} is name, ${d1} is first name.`);
-//     return `${d2} ${d1}`;
-//   })
-// );
+const name = "March Amy";
+console.log(name.replace(/(March) (Amy)/, "$2 $1"));
+console.log(
+  name.replace(/(March) (Amy)/, (str, d1, d2, offset, s) => {
+    console.log(`${d2} is name, ${d1} is first name.`);
+    return `${d2} ${d1}`;
+  })
+);
