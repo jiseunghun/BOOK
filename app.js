@@ -1890,11 +1890,308 @@
 //   })
 // );
 
-const name = "March Amy";
-console.log(name.replace(/(March) (Amy)/, "$2 $1"));
-console.log(
-  name.replace(/(March) (Amy)/, (str, d1, d2, offset, s) => {
-    console.log(`${d2} is name, ${d1} is first name.`);
-    return `${d2} ${d1}`;
+// const name = "March Amy";
+// console.log(name.replace(/(March) (Amy)/, "$2 $1"));
+// console.log(
+//   name.replace(/(March) (Amy)/, (str, d1, d2, offset, s) => {
+//     console.log(`${d2} is name, ${d1} is first name.`);
+//     return `${d2} ${d1}`;
+//   })
+// );
+
+//2022sus 01월 17일
+
+//반복 가능한 객체와 반복자 이해하기
+
+// const items = ["j", "a", "v", "a", "s", "c", "r", "i", "p", "t"];
+// const seq = {
+//   [Symbol.iterator]() {
+//     let i = 0;
+//     return {
+//       next() {
+//         const value = items[i];
+//         i++;
+//         const done = i > items.length;
+//         return { value, done };
+//       },
+//     };
+//   },
+// };
+
+// for (let s of seq) console.log(s);
+// // const [a, b, c, ...arr] = seq;
+// console.log("a >>> ", a);
+// console.log("b >>> ", b);
+// console.log("c >>> ", c);
+// console.log("arr >>> ", arr);
+
+// const str = "hello";
+
+// for (const item of str) {
+//   console.log(item);
+// }
+
+// const iter = str[Symbol.iterator]();
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+
+// map 객체 순환하기
+
+// const map = new Map();
+
+// map.set("one", 1);
+// map.set("two", 2);
+
+// console.log("키 정보만 출력합니다");
+// for (let key of map.keys()) {
+//   console.log(key);
+// }
+
+// console.log("값 정보만 출력합니다");
+// for (let value of map.values()) {
+//   console.log(value);
+// }
+
+// console.log("[for..of, entries] 키,값 정보를 동시에 출력합니다");
+// for (let [key, value] of map.entries()) {
+//   console.log(`키는 ${key}, 값은 ${value} 입니다`);
+// }
+// console.log("[for..of] 키,값 정보를 동시에 출력합니다");
+// for (let [key, value] of map) {
+//   console.log(`키는 ${key}, 값은 ${value} 입니다`);
+// }
+// console.log("[forEach] 키,값 정보를 동시에 출력합니다");
+// map.forEach((value, key) => {
+//   console.log(`키는 ${key}, 값은 ${value} 입니다`);
+// });
+
+// const map = new Map();
+
+// for (let num of [1, 2, 3, 4, 5]) {
+//   map.set((value) => value * 2, num);
+// }
+
+// console.log(map);
+
+// for (let [func, value] of map) {
+//   console.log(func(value));
+// }
+
+// const s = new Set();
+
+// s.add("one");
+// s.add("two");
+// s.add("three");
+
+// console.log(s.has("one"));
+// s.delete("one");
+// console.log(s.has("one"));
+// console.log(s.has("two"));
+
+// const s = new Set();
+
+// s.add("one");
+// s.add(2);
+// s.add([1, 2, 3]);
+// s.add({ a: "A", b: "B" });
+// s.add(function () {});
+
+// console.log(s);
+
+// console.log(s.size);
+// s.clear();
+// console.log(s.size);
+
+// const arr = ["one", "two", "three", "two", "one", "four"];
+// const s = new Set(arr);
+// console.log(s);
+// console.log([...s]);
+
+// const s = new Set();
+
+// s.add("one");
+// s.add("two");
+// s.add("three");
+
+// const keys = s.keys();
+// console.log(keys);
+// const values = s.values();
+// console.log(values);
+// const entries = s.entries();
+
+// console.log(keys.next().value);
+// console.log(keys.next().value);
+// console.log(keys);
+
+// console.log(values.next().value);
+// console.log(values);
+
+// console.log(entries.next().value);
+
+// console.log(keys);
+// console.log(values);
+// console.log(entries);
+
+// const s = new Set();
+
+// s.add("one");
+// s.add("two");
+
+// console.log("키 정보만 출력합니다");
+// for (let key of s.keys()) {
+//   console.log(key);
+// }
+
+// console.log("값 정보만 출력합니다");
+// for (let value of s.values()) {
+//   console.log(value);
+// }
+
+// console.log("[for..of, entries] 키,값 정보를 동시에 출력합니다");
+// for (let [key, value] of s.entries()) {
+//   console.log(`키는 ${key}, 값은 ${value} 입니다`);
+// }
+// console.log("[forEach] 키,값 정보를 동시에 출력합니다");
+// s.forEach((value, key) => {
+//   console.log(`키는 ${key}, 값은 ${value} 입니다`);
+// });
+
+// const timer = {
+//   run: function () {
+//     if (this.t) console.log("이미 실행된 타이머가 있습니다.");
+
+//     this.t = setTimeout(function () {
+//       console.log("1초 뒤에 실행됩니다.");
+//     }, 1000);
+//   },
+//   cancel: function () {
+//     if (this.t) clearTimeout(this.t);
+//     this.t = undefined;
+//   },
+// };
+
+// timer.run();
+// timer.cancel();
+// timer.run();
+
+// let count = 0;
+
+// const timer = setInterval(() => {
+//   console.log(`${count++} 번째 함수가 실행됩니다.`);
+// }, 1000);
+
+// clearInterval(timer);
+
+// function promiseForHomework(mustDo) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("doing homework");
+//       if (mustDo) {
+//         resolve({
+//           result: "homework-result",
+//         });
+//       } else {
+//         reject(new Error("Too lazy!"));
+//       }
+//     }, 3000);
+//   });
+// }
+
+// const promiseA = promiseForHomework(true);
+// console.log("promiseA created", promiseA);
+
+// const promiseB = promiseForHomework();
+// console.log("promiseB created");
+
+// promiseA.then((v) => console.log(v));
+// promiseB.then((v) => console.log(v)).catch((e) => console.error(e));
+
+// let myFirstPromise = new Promise((resolve, reject) => {
+//   // 우리가 수행한 비동기 작업이 성공한 경우 resolve(...)를 호출하고, 실패한 경우 reject(...)를 호출합니다.
+//   // 이 예제에서는 setTimeout()을 사용해 비동기 코드를 흉내냅니다.
+//   // 실제로는 여기서 XHR이나 HTML5 API를 사용할 것입니다.
+//   setTimeout(function () {
+//     resolve("123"); // 와! 문제 없음!
+//   }, 250);
+// });
+
+// myFirstPromise.then((successMessage) => {
+//   // successMessage는 위에서 resolve(...) 호출에 제공한 값입니다.
+//   // 문자열이어야 하는 법은 없지만, 위에서 문자열을 줬으니 아마 문자열일 것입니다.
+//   console.log("와! " + successMessage);
+// });
+
+function doJob(name, person) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (person.stamina > 50) {
+        resolve({
+          result: `${name} success`,
+          loss: 30,
+        });
+      } else {
+        reject(new Error(`${name} failed`));
+      }
+    }, 1000);
+  });
+}
+
+const harin = { stamina: 100 };
+
+doJob("work", harin)
+  .then((v) => {
+    console.log(v);
+    console.log(v.result);
+    harin.stamina -= v.loss;
+    console.log(harin);
+    return doJob("study", harin);
   })
-);
+  .then((v) => {
+    console.log(v);
+    console.log(v.result);
+    harin.stamina -= v.loss;
+    return doJob("work", harin);
+  })
+  .then((v) => {
+    console.log(v.result);
+    harin.stamina -= v.loss;
+    return doJob("study", harin);
+  })
+  .catch((e) => console.error(e));
+
+// function doJob(name, person) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (person.stamina > 50) {
+//         person.stamina -= 30;
+//         resolve({
+//           result: `${name} success`,
+//         });
+//       } else {
+//         reject(new Error(`${name} failed`));
+//       }
+//     }, 1000);
+//   });
+// }
+
+// const harin = { stamina: 100 };
+
+// const execute = async function () {
+//   try {
+//     let v = await doJob("work", harin);
+//     console.log(v.result);
+//     v = await doJob("study", harin);
+//     console.log(v.result);
+//     v = await doJob("work", harin);
+//     console.log(v.result);
+//     v = await doJob("study", harin);
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+
+// execute();
