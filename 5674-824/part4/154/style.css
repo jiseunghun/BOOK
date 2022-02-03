@@ -1,3 +1,7 @@
+body {
+  background: blueviolet;
+}
+
 .user-list {
   display: flex;
   flex-direction: row;
