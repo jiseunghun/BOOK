@@ -29,7 +29,7 @@ function delEventMake() {
     removeBtnList[i].addEventListener(
       "click",
       function () {
-        if (this.parentNode.parentNode) {
+        if (this.parentNode) {
           this.parentNode.parentNode.removeChild(this.parentNode);
         }
       },
